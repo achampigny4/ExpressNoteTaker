@@ -1,21 +1,17 @@
 //dependencies
 const express = require('express');
+const path = require('path');
 const app = express();
-
 //set port
-const port = 3000;
-
-app.get('/', (req, res) => {
-    res.send('Port established');
-});
+const PORT = process.env.PORT || 3333;
 
 //routes
+//static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-//middleware
-
-//start the server
-app.listen(port, () => {
-    console.log(`app listening at http://localhost:${port}`);
+//server listening to PORT
+app.listen(PORT, () => {
+    console.log(`app listening at http://localhost:${PORT}`);
 });
 
 //end the server
